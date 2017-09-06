@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="doctorSearchApp">
+	<head>
+		<title>Doctor Search - Tegan Barry</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles/style.css">
+		 <!-- Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<link rel="stylesheet" href="styles/font-awesome-4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1><i class="fa fa-search"></i> Doctor Search</h1>
+		</header>
+		<div ng-controller="searchCtrl">
+			<div class="content-wrapper container-fluid">
+				<div class="row">
+					<div class="col-md-8">
+						<p>Welcome to doctor search. You can search for doctors near you by name, specialty or review score.</p>
+						<!-- User can search for a doctor based on their information -->
+						<input type="text" name="search" ng-model="search" placeholder="Search for a Doctor">
+						<!-- The doctors are organised in decending order based on their review score - this is assuming review score is the best way for the user to find a doctor they would be happy with, with more time I would have liked to add a way for the user to filter the doctors using the avalible information (such as a drop down to show only GPs if the list was longer) and to be able to search by location -->
+						<div class="doctor-wrapper doctor-{{$index}}" ng-repeat="doctor in doctors.details| orderBy:'-rating'| filter:search" ng-click="moreDetails(doctor, $index);">
+							<h2><i class="fa fa-stethoscope"></i> {{doctor.title}} {{doctor.firstname}} {{doctor.lastname}}</h2>
+							<p class="no-margin-bottom"><strong>Specialises in:</strong> {{doctor.specialty}}</p>
+							<p><strong>Review Score:</strong> {{doctor.rating}} out of 5</p>
+							<a href="">More details <i class="fa fa-caret-down"></i></a>
+							<div class="doctor-wrapper__more">
+								<p>{{doctor.description}}</p>
+								<p><strong>Location</strong>: {{doctor.location}}</p>
+								<p><strong>Practice Name:</strong> {{doctor.practice}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="sidebar">
+							<h2 class="sidebar__title">Similar Doctors</h2>
+							<!-- The doctors on shown in the side bar have the same specialty and are ranked in decending order based on their review score -->
+							<div class="sidebar__doctor" ng-repeat="sameSpecial in sameSpecialty| orderBy:'-ranking'">
+								<h3>{{sameSpecial.title}} {{sameSpecial.firstname}} {{sameSpecial.lastname}}</h3>
+								<p class="no-margin-bottom"><strong>Specialises in:</strong> {{sameSpecial.specialty}}</p>
+								<p><strong>Review Score:</strong> {{sameSpecial.rating}} out of 5</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container-fluid">
+				<p>Written by Tegan Barry</p>
+				<p><strong>Using:</strong> HTML, CSS, AngularJS, Bootstrap, FontAwesome, Karma and Jasmine</p>
+			</div>
+		</footer>
+	</body>
+</html>
