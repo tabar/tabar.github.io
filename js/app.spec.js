@@ -1,40 +1,40 @@
-describe('searchCtrl', function() {
+describe('mapCtrl', function() {
     var scope, createController;
 
-    var first_doctor = { 
-		title: 'Dr',
-		firstname: 'Mary',
-		lastname: 'Johnson',
-		specialty: 'Dermatology',
-		rating: 5,
-		description: 'Dr Johnson specialises in acne treatmeants for teenages and adults.',
-        location: 'Sunnysprings',
-        practice: 'Sunnysprings Skin and Smile'
-	};
+    // vendor: ["https://maps.googleapis.com/maps/api/js?key=AIzaSyDBB5hxZUdxmzG7ZwDq4SvzGmRoaKGs1Gs&libraries=places"];
 
-	beforeEach(angular.mock.module('doctorSearchApp'));
+    var first_park = { 
+        name: 'Sea World Australia',
+        lat: -27.9572369,
+        lng: 153.4233274,
+        country: "Australia",
+        description: 'My personal favorite! I love seeing the Polar Bears and the Seals.',
+        image: "polarbears"
+    };
+
+    beforeEach(angular.mock.module('mapApp'));
 
     beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
         createController = function () {
-            return $controller('searchCtrl', {
+            return $controller('mapCtrl', {
                 '$scope': scope
             });
         };
     }));
 
-    it('should have doctors', function() {
+    it('should have themeparks', function() {
         var controller = createController();
-        expect(scope.doctors).toBeDefined();
+        expect(scope.themepark).toBeDefined();
     });
 
-    it('should have Mary as the first doctor', function() {
+    it('should have sea world as first themepark', function() {
         var controller = createController();
-        expect(scope.doctors.details[0]).toEqual(first_doctor);
+        expect(scope.themepark.details[0]).toEqual(first_park);
     });
 
     it('should not equal ABC', function() {
         var controller = createController();
-        expect(scope.doctors.details[0]).not.toEqual("ABC");
+        expect(scope.themepark.details[0]).not.toEqual("ABC");
     });
 });
