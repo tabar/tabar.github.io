@@ -63,6 +63,12 @@ footer {
 	height: 534px;
 }
 
+@media (max-width: 767px) {
+    .yourplace {
+    	margin-top: 12px;
+	}
+}
+
 #yourmap {
 	height: 400px;
 }
