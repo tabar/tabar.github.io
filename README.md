@@ -16,13 +16,9 @@ Tests built using Karma, Jasmine and angular-google-maps-mock<br />
 To run the tests you will first have to install karma: http://karma-runner.github.io/1.0/intro/installation.html</br>
 Run it using 'karma start' from the project directory.  The results should be:</br>
 
-Executed 0 of 6 SUCCESS<br />
-Executed 1 of 6 SUCCESS<br />
-Executed 2 of 6 SUCCESS<br />
-Executed 3 of 6 SUCCESS<br />
-Executed 4 of 6 SUCCESS<br />
-Executed 5 of 6 SUCCESS<br />
-Executed 6 of 6 SUCCESS<br />
-Executed 6 of 6 SUCCESS<br />
+Executed 1 of 3 SUCCESS<br />
+Executed 2 of 3 SUCCESS<br />
+Executed 3 of 3 SUCCESS<br />
+
 
 ------
